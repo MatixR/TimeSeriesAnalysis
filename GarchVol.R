@@ -1,18 +1,6 @@
 library(fGarch)
 library(fArma)
 
-computeReturnsFromXTS <- function(ts, col)
-{
-  ts.delta <- as.vector(diff(ts[,col])[-1])
-  ts.rtn <- (ts.delta/as.vector(ts[-nrow(ts),col]))
-  return (xts(ts.rtn, order.by=(index(ts)[-1])))
-}
-
-computeLogReturnsFromXTS <- function(ts, col)
-{
-  return (xts(diff(log(ts[,col]))[-1], order.by=(index(ts))[-1]))
-}
-
 # Forecast 1 time step volatility
 garchForecastVolatility1Day <- function(fit, r.t, sigma.t) 
 {
