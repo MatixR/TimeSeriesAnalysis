@@ -8,7 +8,7 @@ fitGarch11Model <- function(returns)
   return (garch.fit)
 }
 
-getGarchVol <- function(fit, rets)
+getAnnualizedGarchVol <- function(fit, rets)
 {
   return (xts(sqrt(252) * fit@sigma.t, order.by=index(rets)))
 }
